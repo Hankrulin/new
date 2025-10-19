@@ -1,4 +1,4 @@
-#### Assignment 3 — Paxos Council Election
+# Assignment 3 — Paxos Council Election
 
 A nine node Paxos implementation for electing a single council president (M1–M9). Each node runs all three roles (Proposer / Acceptor / Learner) and communicates over TCP. Runtime profiles simulate delay, loss, and crashes to validate fault tolerance and liveness.
 
