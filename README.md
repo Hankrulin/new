@@ -17,6 +17,7 @@ TriggerClient – Java helper to send control commands (no dependency on nc).
 1.build the java
 cd Assignment3/system
 javac java/*.java
+
 2. Create the place to save the log and open the port for each member listening
 mkdir -p logs_9
 java -cp ./java CouncilMember M1 --config ../network.config --profile reliable --port 9001 --control-port 10001 > logs_9/M1.log 2>&1 &
@@ -28,14 +29,19 @@ java -cp ./java CouncilMember M6 --config ../network.config --profile reliable -
 java -cp ./java CouncilMember M7 --config ../network.config --profile reliable --port 9007 --control-port 10007 > logs_9/M7.log 2>&1 &
 java -cp ./java CouncilMember M8 --config ../network.config --profile reliable --port 9008 --control-port 10008 > logs_9/M8.log 2>&1 &
 java -cp ./java CouncilMember M9 --config ../network.config --profile reliable --port 9009 --control-port 10009 > logs_9/M9.log 2>&1 &
+
 3. M5 make a proposal:
 java -cp ./java TriggerClient --host localhost --port 10005 M5 propose M5
+
 4.Check the log:
 grep -H "\[CONSENSUS\]" logs_9/*.log
+
 5. Stop all the member:
 pkill -f "java .*CouncilMember"
+
 6. Give the script execute permissions
 chmod +x run_tests.sh  chmod +x Assignment3/system/run_tests.sh
+
 7. Run the file
 ./run_tests.sh     Assignment3/system/run_tests.sh
 
