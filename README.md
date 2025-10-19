@@ -15,10 +15,12 @@ TriggerClient – Java helper to send control commands (no dependency on nc).
 
 ### Build & Run:
 1.build the java
+
 cd Assignment3/system
 javac java/*.java
 
 2. Create the place to save the log and open the port for each member listening
+   
 mkdir -p logs_9
 java -cp ./java CouncilMember M1 --config ../network.config --profile reliable --port 9001 --control-port 10001 > logs_9/M1.log 2>&1 &
 java -cp ./java CouncilMember M2 --config ../network.config --profile reliable --port 9002 --control-port 10002 > logs_9/M2.log 2>&1 &
@@ -31,18 +33,23 @@ java -cp ./java CouncilMember M8 --config ../network.config --profile reliable -
 java -cp ./java CouncilMember M9 --config ../network.config --profile reliable --port 9009 --control-port 10009 > logs_9/M9.log 2>&1 &
 
 3. M5 make a proposal:
+   
 java -cp ./java TriggerClient --host localhost --port 10005 M5 propose M5
 
 4.Check the log:
+
 grep -H "\[CONSENSUS\]" logs_9/*.log
 
 5. Stop all the member:
+   
 pkill -f "java .*CouncilMember"
 
-6. Give the script execute permissions
+6. Give the script execute permissions:
+   
 chmod +x run_tests.sh  chmod +x Assignment3/system/run_tests.sh
 
-7. Run the file
+7. Run the file:
+   
 ./run_tests.sh     Assignment3/system/run_tests.sh
 
 ### Screenshot of the Terminal
@@ -55,5 +62,6 @@ Scenario 2:
 <img width="524" height="119" alt="image" src="https://github.com/user-attachments/assets/c6327d01-f7b1-4b57-8c96-0f0775ea561a" />
 
 Scenario 3:
+
 <img width="524" height="208" alt="image" src="https://github.com/user-attachments/assets/41cb5fdd-213f-4562-9b37-c2600c88b73a" />
 
